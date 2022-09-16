@@ -17,7 +17,8 @@ echo '<!DOCTYPE html>
                 <ul> 
                     <li> <a href="views/cadastro"> Cadastrar Usuários </a> </li>
                     <li> <a href="views/produto"> Cadastrar Produtos </a> </li>
-                    <li> <a href="views/listar"> Listar </li>
+                    <li> <a href="views/listar"> Listar Usuários </li>
+                    <li> <a href="views/produto/listar.php"> Listar Produtos </li>
                     <li> <a href="./controller/UsuarioController.php?logout=true"> Sair </a> </li>
                 </ul>
             </body>

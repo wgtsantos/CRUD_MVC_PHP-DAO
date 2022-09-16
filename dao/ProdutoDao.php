@@ -27,6 +27,37 @@ class ProdutoDao {
         }
     }
 
+    public function listar() {
+        try {
+            $sql = "SELECT * FROM produto order by nome asc";
+            $stmt = Conexao::getConexao()->query($sql);
+            $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $list = array();
+
+            foreach ($lista as $linha) {
+                $list[] = $this->listaProdutos($linha);
+            }
+
+            return $list;
+
+        } catch (PDOException $e) {
+            echo "Ocorreu um erro ao tentar Buscar Todos." . $e->getMessage();
+        }
+    }
+
+    private function listaProdutos($linhas) {
+
+        $produto = new Produto();
+        $produto->setID($linhas['id_produto']);
+        $produto->setNome($linhas['nome']);
+        $produto->setPreco($linhas['preco']);
+        $produto->setMarca($linhas['marca']);
+        $produto->setQuantidade($linhas['quantidade']);
+        $produto->setImg($linhas['imagem']);
+
+        return $produto;
+    }
+
 }
 
 ?>
