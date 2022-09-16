@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Set-2022 às 19:18
+-- Tempo de geração: 16-Set-2022 às 21:19
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -42,7 +42,10 @@ CREATE TABLE `produto` (
 
 INSERT INTO `produto` (`id_produto`, `nome`, `preco`, `marca`, `quantidade`, `imagem`) VALUES
 (1, 'Teclado', 145.9, 'Corsair', 30, 'Teclado_2055494714.png'),
-(2, 'Mouse', 300, 'redragon', 33, 'Mouse_2020138154.jpg');
+(2, 'Mouse', 300, 'Redragon', 33, 'Mouse_957692094.jpg'),
+(3, 'Placa Mãe', 1.9, 'Asus', 23, 'Placa Mãe_1686863475.jpg'),
+(4, 'Memoria RAM', 400.5, 'HyperX', 12, 'Memoria RAM_1531704527.png'),
+(5, 'Processador Core i9', 1350.99, 'Intel', 19, 'Processador Core i9_1869135612.jpg');
 
 -- --------------------------------------------------------
 
@@ -98,7 +101,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`

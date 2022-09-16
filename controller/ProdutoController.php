@@ -29,6 +29,22 @@ if(isset($_POST['cadastrar'])){
           </script>";
     }
 
+// se a requisição for deletar
+} else if(isset($_POST['excluir'])) {
+  
+      $produto->setID($_POST['id_del']);
+      $img = $_POST['del_img'];
+
+      if($produtodao->excluir($produto)) {
+        
+        $del_img = "../img/$img";
+        unlink($del_img);
+  
+      echo "<script>
+              alert('Produto Deletado com Sucesso!!');
+              location.href = '../views/produto/listar.php';
+          </script>";
+      }
 }
 
 ?>

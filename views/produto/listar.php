@@ -30,8 +30,8 @@ if(!$login->checkLogin() || $id != 1) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style> 
             img {
-                width: 150px;
-                height: 150px;
+                width: 100px;
+                height: 80px;
             }
         </style>
         <script>
@@ -71,6 +71,7 @@ if(!$login->checkLogin() || $id != 1) {
                 <td style="text-align:center;">
                     <form action="../../controller/ProdutoController.php" method="post" name="del">
                         <input type="hidden" id="id_del" name="id_del" value="<?= $produto->getID() ?>"/>
+                        <input type="hidden" id="del_img" name="del_img" value="<?= $produto->getImg() ?>"/>
                         <input type="submit" id="excluir" name="excluir" value="EXCLUIR" style="margin-bottom:-15px; background-color:#E23;" onclick="return deletar()"/>
                     </form>
                 </td>

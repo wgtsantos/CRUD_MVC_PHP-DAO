@@ -58,6 +58,19 @@ class ProdutoDao {
         return $produto;
     }
 
+    public function excluir(Produto $produto) {
+        try {
+
+            $sql = "DELETE FROM produto WHERE id_produto= :id";
+            $stmt = Conexao::getConexao()->prepare($sql);
+            $stmt->bindValue(":id", $produto->getID(), PDO::PARAM_INT);
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo "Erro ao Excluir produto" . $e->getMessage();
+        }
+    }
+
 }
 
 ?>
