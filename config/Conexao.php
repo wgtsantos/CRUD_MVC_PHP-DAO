@@ -9,7 +9,7 @@ class Conexao {
 
         # Informações sobre o banco de dados:
         $db_host = "localhost";
-        $db_nome = "crud_php_m";
+        $db_nome = "crud_php";
         $db_usuario = "root";
         $db_senha = "";
         $db_driver = "mysql";

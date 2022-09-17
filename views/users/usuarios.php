@@ -21,7 +21,7 @@ echo '<!DOCTYPE html>
                             <button type="submit" style="background-color:#FFF; text-decoration:underline; border:none; cursor:pointer;"/> Alterar Cadastro </button>
                         </form>
                     </li>
-                    <li> <a href="views/listar"> Visualizar Produtos </li>
+                    <li> <a href="views/produto/listar_user.php"> Visualizar Produtos </li>
                     <li> <a href="./controller/UsuarioController.php?logout=true"> Sair </a> </li>
                 </ul>
             </body>

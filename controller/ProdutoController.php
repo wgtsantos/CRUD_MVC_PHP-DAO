@@ -29,6 +29,31 @@ if(isset($_POST['cadastrar'])){
           </script>";
     }
 
+// se a requisição for alterar
+} else if(isset($_POST['alterar'])){
+
+      $produto->setID($dados['id_alter']);
+      $produto->setNome($dados['nome']);
+      $produto->setPreco($dados['preco']);
+      $produto->setMarca($dados['marca']);
+      $produto->setQuantidade($dados['qtd']);
+      $produto->setImg($_FILES['img']);
+
+      $img = $_POST['del_img'];
+
+      if($produtodao->alterar($produto)) {
+
+        $del_img = "../img/$img";
+        unlink($del_img);
+
+          if(!is_file($del_img)){  
+              echo "<script>
+                      alert('Produto Atualizado com Sucesso!!');
+                      location.href = '../views/produto/listar_admin.php';
+                  </script>";
+          }
+      }
+
 // se a requisição for deletar
 } else if(isset($_POST['excluir'])) {
   

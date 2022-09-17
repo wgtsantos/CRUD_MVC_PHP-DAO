@@ -27,6 +27,29 @@ class ProdutoDao {
         }
     }
 
+    public function alterar(Produto $produto) {
+        try {
+            $sql = "UPDATE produto SET nome = :nome, preco = :preco, marca = :marca, quantidade = :quantidade, imagem = :img WHERE id_produto = :id";
+
+            $stmt = Conexao::getConexao()->prepare($sql);
+            $stmt->bindValue(":id", $produto->getID(), PDO::PARAM_INT);
+            $stmt->bindValue(":nome", $produto->getNome(), PDO::PARAM_STR);
+            $stmt->bindValue(":preco", $produto->getPreco(), PDO::PARAM_STR);
+            $stmt->bindValue(":marca", $produto->getMarca(), PDO::PARAM_STR);
+            $stmt->bindValue(":quantidade", $produto->getQuantidade(), PDO::PARAM_STR);
+
+            $nomep = $produto->getNome();
+            $imagem = $produto->getImg();
+            include '../includes/upload_img.php';
+            $stmt->bindValue(":img", $nome_imagem, PDO::PARAM_STR);
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo "Ocorreu um erro ao tentar atualizar Produto." . $e->getMessage();
+        }
+    }
+
     public function listar() {
         try {
             $sql = "SELECT * FROM produto order by nome asc";
@@ -43,6 +66,27 @@ class ProdutoDao {
         } catch (PDOException $e) {
             echo "Ocorreu um erro ao tentar Buscar Todos." . $e->getMessage();
         }
+    }
+
+    public function editar() {
+        try {
+            $sql = "SELECT * FROM produto WHERE id_produto = :id";
+            $stmt = Conexao::getConexao()->prepare($sql);
+            $stmt->bindValue(":id", $_POST['id_edit'], PDO::PARAM_INT);
+            $stmt->execute();
+            $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $list = array();
+
+            foreach ($lista as $linha) {
+                $list[] = $this->listaProdutos($linha);
+            }
+
+            return $list;
+
+        } catch (PDOException $e) {
+            echo "Ocorreu um erro ao tentar buscar Usuário." . $e->getMessage();
+        }
+
     }
 
     private function listaProdutos($linhas) {
